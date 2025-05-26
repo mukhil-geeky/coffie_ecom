@@ -3,15 +3,15 @@ import 'package:coffie_ecom/presentation/order_screen/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../presentation/onBorading_screen/onBoarding_screen.dart';
+import '../presentation/onboarding_screen/onboarding_screen.dart';
 
 abstract class AppRouter {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
-      case OnBoradingScreen.routeName:
+      case OnboardingScreen.routeName:
         return MaterialPageRoute(
           builder: (context) {
-            return OnBoradingScreen();
+            return OnboardingScreen();
           },
         );
     }

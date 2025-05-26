@@ -1,15 +1,14 @@
-import 'package:coffie_ecom/presentation/order_screen/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../core/asset_path/image_path.dart';
 import '../../core/color/color.dart';
 import '../../core/text/text_style.dart';
+import '../order_screen/order_screen.dart';
 import '../widgets/widget_button.dart';
 
-class OnBoradingScreen extends StatelessWidget {
+class OnboardingScreen extends StatelessWidget {
   static const String routeName = 'homeScreen';
-  const OnBoradingScreen({super.key});
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
