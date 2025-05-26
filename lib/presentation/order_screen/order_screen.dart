@@ -25,39 +25,39 @@ class OrderScreen extends StatelessWidget {
             padding: EdgeInsets.only(top: 64.h, left: 24.w),
             child: Column(
               children: [
-                backNavigationAndOrder(context),
-                deliveryOrPickup(),
-                deliveryOrPickupDetails(),
-                sizedBox16(),
-                divider(),
-                sizedBox16(),
-                itemAdder()
+                _backNavigationAndOrder(context),
+                _deliveryOrPickup(),
+                _deliveryOrPickupDetails(),
+                _sizedBox16(),
+                _divider(),
+                _sizedBox16(),
+                _itemAdder()
               ],
             ),
           ),
-          sizedBox16(),
-          sectionSpliter(),
-          discountAndPaymentSummary(),
-          sizedBox32(),
-          walletAndOrder()
+          _sizedBox16(),
+          _sectionSpliter(),
+          _discountAndPaymentSummary(),
+          _sizedBox32(),
+          _walletAndOrder()
         ],
       ),
     );
   }
 
-  SizedBox sizedBox32() {
+  SizedBox _sizedBox32() {
     return SizedBox(
       height: 32.h,
     );
   }
 
-  SizedBox sizedBox16() {
+  SizedBox _sizedBox16() {
     return SizedBox(
       height: 16.h,
     );
   }
 
-  Container sectionSpliter() {
+  Container _sectionSpliter() {
     return Container(
       height: 4.h,
       width: double.infinity,
@@ -65,7 +65,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Padding divider() {
+  Padding _divider() {
     return Padding(
       padding: EdgeInsets.only(left: 16.w, right: 40.w),
       child: SizedBox(
@@ -79,22 +79,22 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  BlocSelector<OrderBlocBloc, OrderBlocState, bool> deliveryOrPickupDetails() {
+  BlocSelector<OrderBlocBloc, OrderBlocState, bool> _deliveryOrPickupDetails() {
     return BlocSelector<OrderBlocBloc, OrderBlocState, bool>(
       selector: (state) {
         return state.isDeliver;
       },
       builder: (context, isDeliver) {
         if (isDeliver) {
-          return deliveryAddress();
+          return _deliveryAddress();
         } else {
-          return blankSpace();
+          return _blankSpace();
         }
       },
     );
   }
 
-  SizedBox backNavigationAndOrder(BuildContext context) {
+  SizedBox _backNavigationAndOrder(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: 44.h,
@@ -117,7 +117,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Padding deliveryOrPickup() {
+  Padding _deliveryOrPickup() {
     return Padding(
       padding: EdgeInsets.only(top: 24.h, bottom: 24.h, right: 24.h),
       child: Container(
@@ -156,7 +156,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  SizedBox itemAdder() {
+  SizedBox _itemAdder() {
     return SizedBox(
       height: 54.h,
       width: double.infinity,
@@ -241,7 +241,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Padding discountAndPaymentSummary() {
+  Padding _discountAndPaymentSummary() {
     return Padding(
       padding: EdgeInsets.only(top: 16.h, left: 24.w, right: 24.w),
       child: Column(
@@ -352,7 +352,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Container walletAndOrder() {
+  Container _walletAndOrder() {
     return Container(
       height: 165.h,
       width: double.infinity,
@@ -416,7 +416,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Padding deliveryAddress() {
+  Padding _deliveryAddress() {
     return Padding(
       padding: EdgeInsets.only(right: 36.w),
       child: SizedBox(
@@ -460,7 +460,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  SizedBox blankSpace() {
+  SizedBox _blankSpace() {
     return SizedBox(
       height: 121.h,
     );
