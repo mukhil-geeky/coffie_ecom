@@ -397,7 +397,7 @@ class OrderScreen extends StatelessWidget {
                               Text(
                                 "\$ 5.53",
                                 style: kTextStyleSemiBold12.copyWith(
-                                    color: kPrimaryButtonColor),
+                                    color: kPrimaryFontColor),
                               )
                             ],
                           )

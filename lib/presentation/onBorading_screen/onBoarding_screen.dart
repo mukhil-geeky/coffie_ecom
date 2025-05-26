@@ -7,9 +7,9 @@ import '../../core/color/color.dart';
 import '../../core/text/text_style.dart';
 import '../widgets/widget_button.dart';
 
-class HomeScreen extends StatelessWidget {
+class OnBoradingScreen extends StatelessWidget {
   static const String routeName = 'homeScreen';
-  const HomeScreen({super.key});
+  const OnBoradingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

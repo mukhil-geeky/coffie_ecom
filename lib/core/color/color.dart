@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kPrimaryButtonColor = Color(0XFFC67C4E);
+const kPrimaryFontColor = Color(0XFFC67C4E);
 const kDiviederColor = Color(0XFFE3E3E3);
 const kSplitColor = Color(0XFFF9F2ED);
 const kBlack = Colors.black;

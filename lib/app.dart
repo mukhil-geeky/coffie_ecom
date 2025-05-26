@@ -1,4 +1,4 @@
-import 'package:coffie_ecom/presentation/home_screen/home_screen.dart';
+import 'package:coffie_ecom/presentation/onBorading_screen/onBoarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           onGenerateRoute: AppRouter.getRoutes,
-          initialRoute: HomeScreen.routeName,
+          initialRoute: OnBoradingScreen.routeName,
         );
       },
     );
