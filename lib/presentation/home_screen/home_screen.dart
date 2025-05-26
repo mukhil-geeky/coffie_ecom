@@ -1,3 +1,4 @@
+import 'package:coffie_ecom/presentation/order_screen/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -58,6 +59,8 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 32.h, bottom: 54.h),
                         child: WidgetButton(
+                          onTap: () => Navigator.pushNamed(
+                              context, OrderScreen.routeName),
                           label: 'Get Started',
                           backgroundColor: color1,
                           buttonTextColor: white,

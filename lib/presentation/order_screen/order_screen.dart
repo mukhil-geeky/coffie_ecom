@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/text/text_style.dart';
 import '../widgets/widget_button.dart';
 import '../widgets/widget_button2.dart';
+import '../widgets/widget_button3.dart';
 
 class OrderScreen extends StatelessWidget {
   static const String routeName = 'order_screen';
@@ -17,7 +18,7 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: frameColor,
       body: Column(
         children: [
           Padding(
@@ -32,8 +33,11 @@ class OrderScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(10.h),
-                        child: Image.asset(IconPath.backArrow,
-                            height: 24.h, width: 24.w),
+                        child: GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Image.asset(IconPath.backArrow,
+                              height: 24.h, width: 24.w),
+                        ),
                       ),
                       Text(
                         "Order",
@@ -46,65 +50,105 @@ class OrderScreen extends StatelessWidget {
                   padding:
                       EdgeInsets.only(top: 24.h, bottom: 24.h, right: 24.h),
                   child: Container(
-                    color: color3,
                     width: double.infinity,
                     height: 43.h,
+                    decoration: BoxDecoration(
+                        color: disStroke,
+                        borderRadius: BorderRadius.circular(12.r)),
+                    child: BlocBuilder<OrderBlocBloc, OrderBlocState>(
+                      builder: (context, state) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            WidgetButton3(
+                                label: 'Deliver',
+                                onTap: () => context.setOrderBlocBlocState(
+                                    isDeliver: true),
+                                backgroundColor:
+                                    state.isDeliver ? color1 : disStroke,
+                                buttonTextColor:
+                                    state.isDeliver ? white : textColor1,
+                                textStyle: state.isDeliver
+                                    ? kTextStyleSemiBold16
+                                    : kTextStyleRegular16),
+                            WidgetButton3(
+                              label: "Pick Up",
+                              onTap: () => context.setOrderBlocBlocState(
+                                  isDeliver: false),
+                              backgroundColor:
+                                  state.isDeliver ? disStroke : color1,
+                              buttonTextColor:
+                                  state.isDeliver ? textColor1 : white,
+                              textStyle: state.isDeliver
+                                  ? kTextStyleRegular16
+                                  : kTextStyleSemiBold16,
+                            )
+                          ],
+                        );
+                      },
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: 315.w,
-                  height: 121.h,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
+                Padding(
+                  padding: EdgeInsets.only(right: 36.w),
+                  child: SizedBox(
+                    width: 315.w,
+                    height: 121.h,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.only(bottom: 16.h),
+                            child: Text(
+                              "Delivery Address",
+                              style: kTextStyleSemiBold16.copyWith(
+                                  color: textColor1),
+                            )),
+                        Padding(
+                            padding: EdgeInsets.only(bottom: 4.h),
+                            child: Text(
+                              "Jl. Kpg Sutoyo",
+                              style: kTextStyleSemiBold14.copyWith(
+                                  color: textColor1),
+                            )),
+                        Padding(
                           padding: EdgeInsets.only(bottom: 16.h),
                           child: Text(
-                            "Delivery Address",
-                            style: kTextStyleSemiBold16.copyWith(
-                                color: textColor1),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(bottom: 4.h),
-                          child: Text(
-                            "Jl. Kpg Sutoyo",
-                            style: kTextStyleSemiBold14.copyWith(
-                                color: textColor1),
-                          )),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 16.h),
-                        child: Text(
-                          "Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.",
-                          style:
-                              kTextStyleRegular12.copyWith(color: textColor2),
+                            "Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.",
+                            style:
+                                kTextStyleRegular12.copyWith(color: textColor2),
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 229.w,
-                        height: 24.h,
-                        child: Row(spacing: 8.w, children: [
-                          WidgetButton2(
-                              image: IconPath.edit,
-                              label: 'Edit Address',
-                              width: 120.w),
-                          WidgetButton2(
-                              image: IconPath.note,
-                              label: 'Add Note',
-                              width: 101.w)
-                        ]),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 229.w,
+                          height: 24.h,
+                          child: Row(spacing: 8.w, children: [
+                            WidgetButton2(
+                                image: IconPath.edit,
+                                label: 'Edit Address',
+                                width: 120.w),
+                            WidgetButton2(
+                                image: IconPath.note,
+                                label: 'Add Note',
+                                width: 101.w)
+                          ]),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 16.h,
                 ),
-                SizedBox(
-                  width: 295.w,
-                  child: Divider(
-                    color: color4,
-                    thickness: 1,
-                    height: 0,
+                Padding(
+                  padding: EdgeInsets.only(left: 16.w, right: 40.w),
+                  child: SizedBox(
+                    width: 295.w,
+                    child: Divider(
+                      color: color4,
+                      thickness: 1,
+                      height: 0,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -126,7 +170,7 @@ class OrderScreen extends StatelessWidget {
                         width: 16.w,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 6.h, bottom: 6.h),
+                        padding: EdgeInsets.only(top: 6.h),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -134,6 +178,9 @@ class OrderScreen extends StatelessWidget {
                               "Caffe Mocha",
                               style: kTextStyleSemiBold16.copyWith(
                                   color: textColor1),
+                            ),
+                            SizedBox(
+                              height: 4.h,
                             ),
                             Text(
                               "Deep Foam",
@@ -156,21 +203,11 @@ class OrderScreen extends StatelessWidget {
                                 GestureDetector(
                                   onTap: () => context.setOrderBlocBlocState(
                                       counter: state.counter - 1),
-                                  child: Container(
-                                    height: 24.h,
-                                    width: 24.w,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: addSubStrokeColor),
-                                        borderRadius:
-                                            BorderRadius.circular(20.r),
-                                        color: white),
-                                    child: Center(
-                                      child: Text(
-                                        "-",
-                                        style: kTextStyleBold16.copyWith(
-                                            color: textColor2),
-                                      ),
+                                  child: SizedBox(
+                                    child: Image.asset(
+                                      IconPath.minus,
+                                      width: 24.w,
+                                      height: 24.h,
                                     ),
                                   ),
                                 ),
@@ -182,23 +219,12 @@ class OrderScreen extends StatelessWidget {
                                 GestureDetector(
                                   onTap: () => context.setOrderBlocBlocState(
                                       counter: state.counter + 1),
-                                  child: Container(
-                                    height: 24.h,
+                                  child: SizedBox(
+                                      child: Image.asset(
+                                    IconPath.plus,
                                     width: 24.w,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: addSubStrokeColor),
-                                        borderRadius:
-                                            BorderRadius.circular(20.r),
-                                        color: white),
-                                    child: Center(
-                                      child: Text(
-                                        "+",
-                                        style: kTextStyleBold16.copyWith(
-                                            color: textColor3),
-                                      ),
-                                    ),
-                                  ),
+                                    height: 24.h,
+                                  )),
                                 ),
                               ],
                             );
@@ -303,7 +329,7 @@ class OrderScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "\$ 2.0",
-                                style: kTextStyleSemiBold14.copyWith(
+                                style: kTextStyleRegular14.copyWith(
                                     color: textColor3,
                                     decoration: TextDecoration.lineThrough),
                               ),
@@ -355,7 +381,7 @@ class OrderScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Cash/Wallet",
-                                style: kTextStyleRegular14.copyWith(
+                                style: kTextStyleSemiBold14.copyWith(
                                     color: textColor1),
                               ),
                               SizedBox(

@@ -6,4 +6,6 @@ abstract class IconPath{
   static const String rightArrow = 'assets/icons/right_arrow.png';
   static const String wallet = 'assets/icons/wallet.png';
   static const String downArrow = 'assets/icons/down_arrow.png';
+  static const String plus = 'assets/icons/plus.png';
+  static const String minus = 'assets/icons/minus.png';
 }

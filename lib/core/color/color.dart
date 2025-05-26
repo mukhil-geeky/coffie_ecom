@@ -12,3 +12,4 @@ const textColor1 = Color(0XFF242424);
 const textColor3 = Color(0XFF2A2A2A);
 const addSubStrokeColor = Color(0XFFF9F2ED);
 const disStroke = Color(0XFFEDEDED);
+const frameColor = Color(0XFFF9F9F9);
