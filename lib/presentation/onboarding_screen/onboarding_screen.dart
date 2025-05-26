@@ -19,52 +19,18 @@ class OnboardingScreen extends StatelessWidget {
         width: double.infinity,
         child: Stack(
           children: [
-            Image.asset(
-              Imagepath.coffeeCover,
-              fit: BoxFit.cover,
-            ),
+            image(),
             SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 452.h,
-                  ),
+                  blankSpace(),
                   Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 24.h, bottom: 8.h),
-                        child: SizedBox(
-                          width: 327.w,
-                          height: 144.h,
-                          child: Text(
-                            'Fall in Love with Coffee in BlissFul Delight',
-                            style: kTextStyleSemiBold32.copyWith(color: kWhite),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 327.w,
-                        height: 42.h,
-                        child: Text(
-                          'Welcome to our cozy coffee corner, where every cup is a delightful for you.',
-                          textAlign: TextAlign.center,
-                          style: kTextStyleRegular14.copyWith(
-                              color: kLightFontColor),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 32.h, bottom: 54.h),
-                        child: WidgetButton(
-                          onTap: () => Navigator.pushNamed(
-                              context, OrderScreen.routeName),
-                          label: 'Get Started',
-                          backgroundColor: kPrimaryButtonColor,
-                          buttonTextColor: kWhite,
-                        ),
-                      )
+                      mainText(),
+                      subText(),
+                      getStartedButton(context)
                     ],
                   )
                 ],
@@ -74,5 +40,59 @@ class OnboardingScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Image image() {
+    return Image.asset(
+            Imagepath.coffeeCover,
+            fit: BoxFit.cover,
+          );
+  }
+
+  SizedBox blankSpace() {
+    return SizedBox(
+                  height: 452.h,
+                );
+  }
+
+  Padding getStartedButton(BuildContext context) {
+    return Padding(
+                      padding: EdgeInsets.only(top: 32.h, bottom: 54.h),
+                      child: WidgetButton(
+                        onTap: () => Navigator.pushNamed(
+                            context, OrderScreen.routeName),
+                        label: 'Get Started',
+                        backgroundColor: kPrimaryButtonColor,
+                        buttonTextColor: kWhite,
+                      ),
+                    );
+  }
+
+  SizedBox subText() {
+    return SizedBox(
+                      width: 327.w,
+                      height: 42.h,
+                      child: Text(
+                        'Welcome to our cozy coffee corner, where every cup is a delightful for you.',
+                        textAlign: TextAlign.center,
+                        style: kTextStyleRegular14.copyWith(
+                            color: kLightFontColor),
+                      ),
+                    );
+  }
+
+  Padding mainText() {
+    return Padding(
+                      padding: EdgeInsets.only(top: 24.h, bottom: 8.h),
+                      child: SizedBox(
+                        width: 327.w,
+                        height: 144.h,
+                        child: Text(
+                          'Fall in Love with Coffee in BlissFul Delight',
+                          style: kTextStyleSemiBold32.copyWith(color: kWhite),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
   }
 }
