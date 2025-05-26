@@ -56,8 +56,9 @@ class OrderScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: kBoxStrokeColor,
                         borderRadius: BorderRadius.circular(12.r)),
-                    child: BlocBuilder<OrderBlocBloc, OrderBlocState>(
-                      builder: (context, state) {
+                    child: BlocSelector<OrderBlocBloc, OrderBlocState, bool>(
+                      selector: (state) => state.isDeliver,
+                      builder: (context, isDeliver) {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -65,24 +66,24 @@ class OrderScreen extends StatelessWidget {
                                 label: 'Deliver',
                                 onTap: () => context.setOrderBlocBlocState(
                                     isDeliver: true),
-                                backgroundColor: state.isDeliver
+                                backgroundColor: isDeliver
                                     ? kPrimaryButtonColor
                                     : kButtonContainerColor,
                                 buttonTextColor:
-                                    state.isDeliver ? kWhite : kDarkFontColor1,
-                                textStyle: state.isDeliver
+                                    isDeliver ? kWhite : kDarkFontColor1,
+                                textStyle: isDeliver
                                     ? kTextStyleSemiBold16
                                     : kTextStyleRegular16),
                             WidgetButton3(
                               label: "Pick Up",
                               onTap: () => context.setOrderBlocBlocState(
                                   isDeliver: false),
-                              backgroundColor: state.isDeliver
+                              backgroundColor: isDeliver
                                   ? kButtonContainerColor
                                   : kPrimaryButtonColor,
                               buttonTextColor:
-                                  state.isDeliver ? kDarkFontColor1 : kWhite,
-                              textStyle: state.isDeliver
+                                  isDeliver ? kDarkFontColor1 : kWhite,
+                              textStyle: isDeliver
                                   ? kTextStyleRegular16
                                   : kTextStyleSemiBold16,
                             )
@@ -198,16 +199,17 @@ class OrderScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 24.h,
-                        child: BlocBuilder<OrderBlocBloc, OrderBlocState>(
-                          builder: (context, state) {
+                        child: BlocSelector<OrderBlocBloc, OrderBlocState, int>(
+                          selector:(state) => state.counter ,
+                          builder: (context, counter) {
                             return Row(
                               spacing: 18.w,
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    if (state.counter > 0) {
+                                    if (counter > 0) {
                                       context.setOrderBlocBlocState(
-                                          counter: state.counter - 1);
+                                          counter: counter - 1);
                                     }
                                   },
                                   child: SizedBox(
@@ -219,13 +221,13 @@ class OrderScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  state.counter.toString(),
+                                  counter.toString(),
                                   style: kTextStyleSemiBold14.copyWith(
                                       color: kDigitFontColor),
                                 ),
                                 GestureDetector(
                                   onTap: () => context.setOrderBlocBlocState(
-                                      counter: state.counter + 1),
+                                      counter: counter + 1),
                                   child: SizedBox(
                                       child: Image.asset(
                                     IconPath.plus,
