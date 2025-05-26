@@ -18,7 +18,7 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: frameColor,
+      backgroundColor: kFrameColor,
       body: Column(
         children: [
           Padding(
@@ -41,7 +41,8 @@ class OrderScreen extends StatelessWidget {
                       ),
                       Text(
                         "Order",
-                        style: kTextStyleSemiBold16.copyWith(color: textColor1),
+                        style: kTextStyleSemiBold16.copyWith(
+                            color: kDarkFontColor1),
                       )
                     ],
                   ),
@@ -53,7 +54,7 @@ class OrderScreen extends StatelessWidget {
                     width: double.infinity,
                     height: 43.h,
                     decoration: BoxDecoration(
-                        color: disStroke,
+                        color: kBoxStrokeColor,
                         borderRadius: BorderRadius.circular(12.r)),
                     child: BlocBuilder<OrderBlocBloc, OrderBlocState>(
                       builder: (context, state) {
@@ -64,10 +65,11 @@ class OrderScreen extends StatelessWidget {
                                 label: 'Deliver',
                                 onTap: () => context.setOrderBlocBlocState(
                                     isDeliver: true),
-                                backgroundColor:
-                                    state.isDeliver ? color1 : disStroke,
+                                backgroundColor: state.isDeliver
+                                    ? kPrimaryButtonColor
+                                    : kButtonContainerColor,
                                 buttonTextColor:
-                                    state.isDeliver ? white : textColor1,
+                                    state.isDeliver ? kWhite : kDarkFontColor1,
                                 textStyle: state.isDeliver
                                     ? kTextStyleSemiBold16
                                     : kTextStyleRegular16),
@@ -75,10 +77,11 @@ class OrderScreen extends StatelessWidget {
                               label: "Pick Up",
                               onTap: () => context.setOrderBlocBlocState(
                                   isDeliver: false),
-                              backgroundColor:
-                                  state.isDeliver ? disStroke : color1,
+                              backgroundColor: state.isDeliver
+                                  ? kButtonContainerColor
+                                  : kPrimaryButtonColor,
                               buttonTextColor:
-                                  state.isDeliver ? textColor1 : white,
+                                  state.isDeliver ? kDarkFontColor1 : kWhite,
                               textStyle: state.isDeliver
                                   ? kTextStyleRegular16
                                   : kTextStyleSemiBold16,
@@ -102,21 +105,21 @@ class OrderScreen extends StatelessWidget {
                             child: Text(
                               "Delivery Address",
                               style: kTextStyleSemiBold16.copyWith(
-                                  color: textColor1),
+                                  color: kDarkFontColor1),
                             )),
                         Padding(
                             padding: EdgeInsets.only(bottom: 4.h),
                             child: Text(
                               "Jl. Kpg Sutoyo",
                               style: kTextStyleSemiBold14.copyWith(
-                                  color: textColor1),
+                                  color: kDarkFontColor1),
                             )),
                         Padding(
                           padding: EdgeInsets.only(bottom: 16.h),
                           child: Text(
                             "Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.",
-                            style:
-                                kTextStyleRegular12.copyWith(color: textColor2),
+                            style: kTextStyleRegular12.copyWith(
+                                color: kLightFontColor),
                           ),
                         ),
                         SizedBox(
@@ -145,7 +148,7 @@ class OrderScreen extends StatelessWidget {
                   child: SizedBox(
                     width: 295.w,
                     child: Divider(
-                      color: color4,
+                      color: kDiviederColor,
                       thickness: 1,
                       height: 0,
                     ),
@@ -177,7 +180,7 @@ class OrderScreen extends StatelessWidget {
                             Text(
                               "Caffe Mocha",
                               style: kTextStyleSemiBold16.copyWith(
-                                  color: textColor1),
+                                  color: kDarkFontColor1),
                             ),
                             SizedBox(
                               height: 4.h,
@@ -185,7 +188,7 @@ class OrderScreen extends StatelessWidget {
                             Text(
                               "Deep Foam",
                               style: kTextStyleRegular12.copyWith(
-                                  color: textColor2),
+                                  color: kLightFontColor),
                             )
                           ],
                         ),
@@ -214,7 +217,7 @@ class OrderScreen extends StatelessWidget {
                                 Text(
                                   state.counter.toString(),
                                   style: kTextStyleSemiBold14.copyWith(
-                                      color: textColor3),
+                                      color: kDigitFontColor),
                                 ),
                                 GestureDetector(
                                   onTap: () => context.setOrderBlocBlocState(
@@ -243,7 +246,7 @@ class OrderScreen extends StatelessWidget {
           Container(
             height: 4.h,
             width: double.infinity,
-            color: color5,
+            color: kSplitColor,
           ),
           Padding(
             padding: EdgeInsets.only(top: 16.h, left: 24.w, right: 24.w),
@@ -255,8 +258,8 @@ class OrderScreen extends StatelessWidget {
                   height: 56.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.r),
-                    border: Border.all(color: disStroke),
-                    color: white,
+                    border: Border.all(color: kButtonContainerColor),
+                    color: kWhite,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -271,7 +274,8 @@ class OrderScreen extends StatelessWidget {
                       ),
                       Text(
                         "1 Discount is Applies",
-                        style: kTextStyleSemiBold14.copyWith(color: color3),
+                        style: kTextStyleSemiBold14.copyWith(
+                            color: kDarkFontColor2),
                       ),
                       SizedBox(
                         width: 90.w,
@@ -295,7 +299,8 @@ class OrderScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Payment Summary",
-                        style: kTextStyleSemiBold16.copyWith(color: textColor1),
+                        style: kTextStyleSemiBold16.copyWith(
+                            color: kDarkFontColor1),
                       ),
                       SizedBox(
                         height: 16.h,
@@ -305,12 +310,13 @@ class OrderScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Price",
-                            style: kTextStyleRegular14.copyWith(color: color3),
+                            style: kTextStyleRegular14.copyWith(
+                                color: kDarkFontColor2),
                           ),
                           Text(
                             "\$ 4.53",
                             style: kTextStyleSemiBold14.copyWith(
-                                color: textColor1),
+                                color: kDarkFontColor1),
                           )
                         ],
                       ),
@@ -322,7 +328,8 @@ class OrderScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Delivery Fee",
-                            style: kTextStyleRegular14.copyWith(color: color3),
+                            style: kTextStyleRegular14.copyWith(
+                                color: kDarkFontColor2),
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.min,
@@ -330,7 +337,7 @@ class OrderScreen extends StatelessWidget {
                               Text(
                                 "\$ 2.0",
                                 style: kTextStyleRegular14.copyWith(
-                                    color: textColor3,
+                                    color: kDigitFontColor,
                                     decoration: TextDecoration.lineThrough),
                               ),
                               SizedBox(
@@ -339,7 +346,7 @@ class OrderScreen extends StatelessWidget {
                               Text(
                                 "\$ 1.0",
                                 style: kTextStyleSemiBold14.copyWith(
-                                    color: textColor1),
+                                    color: kDarkFontColor1),
                               )
                             ],
                           )
@@ -358,7 +365,7 @@ class OrderScreen extends StatelessWidget {
             height: 165.h,
             width: double.infinity,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.r), color: white),
+                borderRadius: BorderRadius.circular(16.r), color: kWhite),
             child: Padding(
               padding: EdgeInsets.only(top: 16.h, left: 24.w, right: 24.w),
               child: Column(
@@ -382,7 +389,7 @@ class OrderScreen extends StatelessWidget {
                               Text(
                                 "Cash/Wallet",
                                 style: kTextStyleSemiBold14.copyWith(
-                                    color: textColor1),
+                                    color: kDarkFontColor1),
                               ),
                               SizedBox(
                                 height: 4.h,
@@ -390,7 +397,7 @@ class OrderScreen extends StatelessWidget {
                               Text(
                                 "\$ 5.53",
                                 style: kTextStyleSemiBold12.copyWith(
-                                    color: color1),
+                                    color: kPrimaryButtonColor),
                               )
                             ],
                           )
@@ -408,8 +415,8 @@ class OrderScreen extends StatelessWidget {
                   ),
                   WidgetButton(
                     label: 'Order',
-                    backgroundColor: color1,
-                    buttonTextColor: white,
+                    backgroundColor: kPrimaryButtonColor,
+                    buttonTextColor: kWhite,
                   )
                 ],
               ),

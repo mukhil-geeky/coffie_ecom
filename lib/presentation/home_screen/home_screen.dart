@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: black,
+      backgroundColor: kBlack,
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                           height: 144.h,
                           child: Text(
                             'Fall in Love with Coffee in BlissFul Delight',
-                            style: kTextStyleSemiBold32.copyWith(color: white),
+                            style: kTextStyleSemiBold32.copyWith(color: kWhite),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -52,8 +52,8 @@ class HomeScreen extends StatelessWidget {
                         child: Text(
                           'Welcome to our cozy coffee corner, where every cup is a delightful for you.',
                           textAlign: TextAlign.center,
-                          style:
-                              kTextStyleRegular14.copyWith(color: textColor2),
+                          style: kTextStyleRegular14.copyWith(
+                              color: kLightFontColor),
                         ),
                       ),
                       Padding(
@@ -62,8 +62,8 @@ class HomeScreen extends StatelessWidget {
                           onTap: () => Navigator.pushNamed(
                               context, OrderScreen.routeName),
                           label: 'Get Started',
-                          backgroundColor: color1,
-                          buttonTextColor: white,
+                          backgroundColor: kPrimaryButtonColor,
+                          buttonTextColor: kWhite,
                         ),
                       )
                     ],

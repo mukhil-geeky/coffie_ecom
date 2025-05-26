@@ -28,9 +28,9 @@ class WidgetButton2 extends StatelessWidget {
           height: 26.h,
           width: width,
           decoration: BoxDecoration(
-            border: Border.all(color: textColor2), 
-            borderRadius: BorderRadius.circular(16.r), 
-            color: Colors.white, 
+            border: Border.all(color: kLightFontColor),
+            borderRadius: BorderRadius.circular(16.r),
+            color: Colors.white,
           ),
           child: Center(
             child: Row(
@@ -38,10 +38,10 @@ class WidgetButton2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(image, height: 14.h, width: 14.w),
-                SizedBox(width: 4.w), 
+                SizedBox(width: 4.w),
                 Text(
                   label,
-                  style: kTextStyleRegular12.copyWith(color: color3),
+                  style: kTextStyleRegular12.copyWith(color: kDarkFontColor2),
                 ),
               ],
             ),
