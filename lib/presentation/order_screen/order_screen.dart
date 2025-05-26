@@ -204,8 +204,12 @@ class OrderScreen extends StatelessWidget {
                               spacing: 18.w,
                               children: [
                                 GestureDetector(
-                                  onTap: () => context.setOrderBlocBlocState(
-                                      counter: state.counter - 1),
+                                  onTap: () {
+                                    if (state.counter > 0) {
+                                      context.setOrderBlocBlocState(
+                                          counter: state.counter - 1);
+                                    }
+                                  },
                                   child: SizedBox(
                                     child: Image.asset(
                                       IconPath.minus,
